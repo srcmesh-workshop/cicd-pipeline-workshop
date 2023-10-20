@@ -26,7 +26,7 @@ helm template [release-name] -n [namespace] demo-api/
 **請直接修改 example-helm-chart 的內容，不要額外 copy**
 
 1. 請將 `example-helm-chart/templates/api.yaml` 的 `image: python:latest` 替換成剛剛推送的鏡像
-2. 請為 `example-helm-chart/templates/api.yaml` 加上對應的 Image Pull Secret
+2. 請為 `example-helm-chart/templates/api.yaml` 加上對應的 `Image Pull Secret`
 3. 請按照 `基本 Helm 操作` 步驟將修改過的 Helm Chart 部署到叢集你的 Namespace 內
 
 ## 實作 2

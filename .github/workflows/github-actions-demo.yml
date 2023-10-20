@@ -28,8 +28,10 @@ jobs:
   image_scan:
     needs: build
     runs-on: ubuntu-latest
-    container: aquasec/trivy:0.46.0
     steps:
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.46.0
       - name: Scan Image
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin registry.srcmesh.dev
@@ -55,7 +57,7 @@ jobs:
           ./get_helm.sh
 
           # helm install
-          helm install test-release -n default hands-on/3-helm/example-helm-chart --wait
+          helm install test-release -n default hands-on/3-helm/example-helm-chart
 
           kubectl -n default get pod 
 
