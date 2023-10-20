@@ -26,6 +26,7 @@ jobs:
           tags: registry.srcmesh.dev/workshop/aaaa:0.0.1
 
   kind:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
