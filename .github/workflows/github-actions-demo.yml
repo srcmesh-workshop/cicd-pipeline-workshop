@@ -25,6 +25,17 @@ jobs:
           push: true
           tags: registry.srcmesh.dev/workshop/aaaa:0.0.1
 
+  image_scan:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.46.0
+      - name: Scan Image
+        run: |
+          trivy image registry.srcmesh.dev/workshop/aaaa:0.0.1 --exit-code 132
+
   kind:
     needs: build
     runs-on: ubuntu-latest
