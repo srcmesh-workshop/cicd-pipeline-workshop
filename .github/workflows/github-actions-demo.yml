@@ -21,7 +21,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: python-app
+          context: hands-on/1-build-push-image/python-app
           push: true
           tags: registry.srcmesh.dev/workshop/aaaa:0.0.1
 
