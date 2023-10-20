@@ -35,19 +35,19 @@ jobs:
           version: "v0.11.1"
       - name: Test Install
         run: | 
+          # show kind cluster info
+          kubectl cluster-info
+          kubectl get nodes
+          
+          # install helm binary
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
           chmod 700 get_helm.sh
           ./get_helm.sh
 
-          helm create aaaaa
+          # helm install
+          helm install test-release -n default hands-on/3-helm/example-helm-chart --wait
 
-          kubectl cluster-info
-          kubectl get pods -n kube-system
-          echo "current-context:" $(kubectl config current-context)
-          echo "environment-kubeconfig:" ${KUBECONFIG}
-
-
-
+          kubectl -n default get pod 
 
   # kind:
   #   runs-on: ubuntu-latest
