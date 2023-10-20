@@ -1,12 +1,15 @@
 # Python REST API Sample
 
-## Build Image
+## 打包鏡像
 
 ```bash
-docker build -t <registry>/workshop/<image-name>:<image-tag> .
+docker build -t <registry>/workshop/<image-name>:<image-tag> ./python-app
+
+# Example
+docker build -t registry.srcmesh.dev/workshop/foobar:0.0.1 ./python-app
 ```
 
-## Push Image
+## 推送鏡像
 
 ```bash
 echo <password> | docker login -u <username> --password-stdin <registry>
@@ -14,7 +17,7 @@ echo <password> | docker login -u <username> --password-stdin <registry>
 docker push image <registry>/workshop/<image-name>:<image-tag>
 ```
 
-## Ensure Image Exists
+## 確定能拉取鏡像
 
 ```bash
 # remove local image
