@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      # clone source code
+      - name: Checkout
+        uses: actions/checkout@v3
+      # build image
+      - name: build and push image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: registry.srcmesh.dev/workshop/aaaa
+          dockerfile: python-app/Dockerfile
+          always_pull: true
+          tags: latest
