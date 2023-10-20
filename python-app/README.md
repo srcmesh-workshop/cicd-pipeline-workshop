@@ -14,7 +14,7 @@ echo <password> | docker login -u <username> --password-stdin <registry>
 docker push image <registry>/workshop/<image-name>:<image-tag>
 ```
 
-## Check Image Exists
+## Ensure Image Exists
 
 ```bash
 # remove local image

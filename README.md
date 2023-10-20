@@ -2,21 +2,20 @@
 
 ## Helm
 
-### Create Sample Helm Chart
+### 基本 Helm 操作
 
 ```bash
-# Command
+# 建立 Chart 骨架
 helm create demo-api
 
-# Remove all files under demo-api/templates
-rm -rf demo-api/templates/*
-rm demo-api/values.yaml
+# 安裝 helm chart release 到指定 Namespace 底下
+helm install [release] -n [namespace] demo-api/
 
-# Create empty values.yaml
-touch demo-api/values.yaml
+# 列出指定 Namespace 底下安裝哪些 helm chart release
+helm list -n [namespace]
 
-# Copy sample YAML files
-cp sample-yaml/* demo-api/templates
+# 升級 release
+helm upgrade [release] -n [namespace] demo-api
 ```
 
 ### Values replacement
